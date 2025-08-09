@@ -27,7 +27,13 @@ const foodSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.data = action.payload;
+        state.isError = false;
       }
     );
+    builder.addCase(foodThunk.useCreatFood.rejected, (state) => {
+      state.isError = true;
+      state.isLoading = false;
+    });
   },
 });
+export default foodSlice;

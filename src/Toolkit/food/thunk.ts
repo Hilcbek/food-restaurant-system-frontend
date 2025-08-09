@@ -1,12 +1,13 @@
 import { foodApi } from '@/api';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
+import type { IFood } from './types';
 
 const useCreatFood = createAsyncThunk(
   'timeSlot/getAllTimeSlotRelatedToWorkShop',
-  async (_, thunkApi) => {
+  async (data :IFood, thunkApi) => {
     try {
-      const response = await foodApi.createFood();
+      const response = await foodApi.createFood(data);
 
       return response;
     } catch (error) {
